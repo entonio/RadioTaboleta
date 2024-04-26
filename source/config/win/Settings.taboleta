@@ -1,0 +1,8 @@
+# Definições
+
+Mpd         mplayer:32123
+Volume      7
+Zapping     5600
+Playback    let
+Radio       let
+Trim        \[onAir:.+\]

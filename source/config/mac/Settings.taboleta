@@ -1,0 +1,10 @@
+# Definições
+
+Mpd         localhost:32123
+Volume      9
+Zapping     10
+Playback    let
+Radio       let
+Trim        \[onAir:.+\]
+SQLite      $HOME/Dropbox/Musicas.sqlite
+Restart     killall -9 mpd

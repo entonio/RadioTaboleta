@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CFBundleIdentifier</key>
+		<string>pt.am.RádioTaboleta</string>
+		<key>CFBundleExecutable</key>
+		<string>RádioTaboleta</string>
+		<key>CFBundleIconFile</key>
+		<string>app</string>
+		<key>LSMinimumSystemVersion</key>
+		<string>10.14.6</string>
+		<key>NSHighResolutionCapable</key>
+		<string>True</string>
+		<key>LSUIElement</key>
+		<string>1</string>
+	</dict>
+</plist>

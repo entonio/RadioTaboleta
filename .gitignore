@@ -1,0 +1,8 @@
+.DS_Store
+.idea/
+release/
+source/config/*/NOTICE
+source/packaging/*/NOTICE
+/*.syso
+/*.sh
+/*.txt
