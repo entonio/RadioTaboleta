@@ -41,6 +41,9 @@ Radio       predefined
 # delete the sequence "[onAir:<any characters>]" from song titles
 Trim        \[onAir:.+\]
 
+# language (pt, en)
+Language    en
+
 # store the clicked titles at $HOME/Musicas.sqlite
 SQLite      $HOME/Musicas.sqlite
 

@@ -3,8 +3,7 @@
 Mpd         localhost:32123
 Volume      9
 Zapping     10
-Playback    let
-Radio       let
 Trim        \[onAir:.+\]
+Language    pt
 SQLite      $HOME/Dropbox/Musicas.sqlite
 Restart     killall -9 mpd

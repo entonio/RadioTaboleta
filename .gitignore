@@ -3,6 +3,7 @@
 release/
 source/config/*/NOTICE
 source/packaging/*/NOTICE
+source/config/*/translations.csv
 /*.syso
 /*.sh
 /*.txt

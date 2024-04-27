@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"main/libx/taboleta"
+	"main/libx/translate"
 
 	"github.com/getlantern/systray"
 )
@@ -31,6 +32,7 @@ type Settings struct {
 	Playback   string
 	Radio      string
 	Trim       *regexp.Regexp
+	Language   string
 	SQLite     string
 	Restart    []string
 	Predefined Radio
@@ -52,7 +54,9 @@ var SETTINGS Settings
 var RADIOS []Radio
 var LARGEST_TITLE_LENGTH = 20
 
-var musicas = NewMusicas()
+var MUSICAS = NewMusicas()
+
+var TRANSLATOR translate.Translator
 
 func Start() {
 	CONFIG_DIR = findConfigDir()
@@ -60,6 +64,7 @@ func Start() {
 	log.Printf("SETTINGS: %+v\n", SETTINGS)
 	radios := readRadios(CONFIG_DIR)
 	log.Printf("RADIOS: %+v\n", radios)
+	TRANSLATOR = translate.NewTranslator(filepath.Join(CONFIG_DIR, "translations.csv"), "pt")
 
 	checkAddresses := false
 	if checkAddresses {
@@ -187,6 +192,8 @@ func readSettings(configDir string) (settings Settings) {
 			settings.Radio = value
 		case "Trim":
 			settings.Trim, _ = regexp.Compile(value)
+		case "Language":
+			settings.Language = value
 		case "SQLite":
 			settings.SQLite = value
 		case "Restart":
@@ -224,6 +231,14 @@ func readRadios(configDir string) (radios []Radio) {
 		separator = nil
 	}
 	return
+}
+
+func t(key string) string {
+	return TRANSLATOR.Translate(SETTINGS.Language, key)
+}
+
+func tf(key string, parameters ...any) string {
+	return TRANSLATOR.TranslateFormatted(SETTINGS.Language, key, parameters...)
 }
 
 func AsInt(s string, onError int) int {

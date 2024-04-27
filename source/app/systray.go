@@ -58,12 +58,12 @@ func buildUI() {
 	//systray.SetTemplateIcon(icon, icon)
 	systray.SetIcon(icon)
 	//systray.SetTooltip("RádioTaboleta")
-	setMenuTitle("RádioTaboleta", false)
+	setMenuTitle(t("RádioTaboleta"), false)
 
-	mLower = systray.AddMenuItem("Volume -", "Diminuir o volume")
+	mLower = systray.AddMenuItem(t("Volume -"), t("Diminuir o volume"))
 	mLower.Hide()
 
-	mSetVol = systray.AddMenuItem("Volume %", "Definir o volume")
+	mSetVol = systray.AddMenuItem(t("Volume %"), t("Definir o volume"))
 	mSetVol.Hide()
 	mSetVolClickedCh := make(chan int)
 	mSetVolListen := func(mSetVolAtIndex *systray.MenuItem, vol int) {
@@ -83,7 +83,7 @@ func buildUI() {
 		}
 	}
 
-	mLouder = systray.AddMenuItem("Volume +", "Aumentar o volume")
+	mLouder = systray.AddMenuItem(t("Volume +"), t("Aumentar o volume"))
 	mLouder.Hide()
 
 	systray.AddSeparator()
@@ -93,7 +93,7 @@ func buildUI() {
 		mServer.Disable()
 	}
 
-	mStatus = systray.AddMenuItem("A iniciar...", "")
+	mStatus = systray.AddMenuItem(t("A iniciar..."), "")
 	mStatus.Disable()
 
 	mName = systray.AddMenuItem("", "")
@@ -105,22 +105,22 @@ func buildUI() {
 
 	systray.AddSeparator()
 
-	mZapOn = systray.AddMenuItem("Zapping", "Percorrer as estações")
+	mZapOn = systray.AddMenuItem(t("Zapping"), t("Percorrer as estações"))
 	mZapOn.Hide()
 
-	mZapOff = systray.AddMenuItem("Zapping", "Parar de percorrer as estações")
+	mZapOff = systray.AddMenuItem(t("Zapping"), t("Parar de percorrer as estações"))
 	mZapOff.Check()
 	mZapOff.Hide()
 
-	mResume = systray.AddMenuItem("Retomar", "Iniciar o rádio")
+	mResume = systray.AddMenuItem(t("Retomar"), t("Iniciar o rádio"))
 	mResume.Hide()
 
-	mPause = systray.AddMenuItem("Pausa", "Parar o rádio")
+	mPause = systray.AddMenuItem(t("Pausa"), t("Parar o rádio"))
 	mPause.Hide()
 
 	systray.AddSeparator()
 
-	mClose := systray.AddMenuItem("Sair", "Fechar")
+	mClose := systray.AddMenuItem(t("Sair"), t("Fechar"))
 	systray.AddSeparator()
 
 	mRadioClickedCh := make(chan int)
@@ -149,7 +149,7 @@ func buildUI() {
 				latest = item
 			}
 		}
-		mRadioAtIndex := systray.AddMenuItem(radio.Name, "Mudar para "+radio.Name)
+		mRadioAtIndex := systray.AddMenuItem(radio.Name, tf("Mudar para %s", radio.Name))
 		latest = item
 		mRadioListen(mRadioAtIndex, i)
 		mRadios = append(mRadios, mRadioAtIndex)
@@ -179,7 +179,7 @@ func buildUI() {
 					clipboard.WriteAll(displayedTitle)
 					split := strings.SplitN(displayedTitle, " - ", 2)
 					if len(split) == 2 {
-						musicas.Add(split[0], split[1])
+						MUSICAS.Add(split[0], split[1])
 					}
 				}
 
@@ -307,17 +307,17 @@ func updateUI() {
 				mZapOn.Hide()
 				mZapOff.Show()
 			}
-			mStatus.SetTitle(fmt.Sprintf("Vol %d%%, %d kbps", currentVolume, status.BitRate))
+			mStatus.SetTitle(tf("Vol %d%%, %d kbps", currentVolume, status.BitRate))
 		} else {
 			mResume.Show()
 			mPause.Hide()
 			mZapOn.Hide()
 			mZapOff.Hide()
-			mStatus.SetTitle(fmt.Sprintf("Vol %d%%, em pausa", currentVolume))
+			mStatus.SetTitle(tf("Vol %d%%, em pausa", currentVolume))
 			if len(displayedName) > 0 {
 				setMenuTitle(displayedName, false)
 			} else {
-				setMenuTitle("Em pausa", false)
+				setMenuTitle(t("Em pausa"), false)
 			}
 		}
 		mSetVol.Show()
@@ -378,7 +378,7 @@ func updateUI() {
 			mVols2[v2].Check()
 		*/
 	} else {
-		mStatus.SetTitle(fmt.Sprintf("Não contactável"))
+		mStatus.SetTitle(t("Não contactável"))
 		if len(status.ErrorAddress) > 0 {
 			for i, mRadio := range mRadios {
 				if status.ErrorAddress == RADIOS[i].Address {
