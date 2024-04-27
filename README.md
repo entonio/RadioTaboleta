@@ -51,6 +51,9 @@ SQLite      $HOME/Musicas.sqlite
 Restart     killall -9 mpd
 ```
 
+Building
+--------
+The build scripts are provided in the `/scripts` folder. These are generic build + packaging scripts for go apps, and are not part of the project per se. You have to put them somewhere in your path and then call `xgob.sh` from the root of the project (the level above `/source`).
 
 License
 -------
