@@ -1,5 +1,6 @@
 .DS_Store
 .idea/
+packed/
 release/
 source/config/*/translations.csv
 source/config/**/NOTICE

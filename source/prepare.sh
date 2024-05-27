@@ -10,5 +10,7 @@ cp -va resources/$current.icns    config/mac/menubar.icns
 cp -va ../NOTICE                  packaging/mac/Resources/
 cp -va resources/$current.icns    packaging/mac/Resources/app.icns
 
+cp -va resources/installer-mac.jpeg   packaging/mac/Resources/installer-mac.jpeg
+
 cp -va resources/translations.csv config/win/
 cp -va resources/translations.csv config/mac/
