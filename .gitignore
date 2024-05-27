@@ -1,9 +1,10 @@
 .DS_Store
 .idea/
 release/
-source/config/*/NOTICE
-source/packaging/*/NOTICE
 source/config/*/translations.csv
+source/config/**/NOTICE
+source/packaging/**/NOTICE
 /*.syso
 /*.sh
 /*.txt
+*.nosync

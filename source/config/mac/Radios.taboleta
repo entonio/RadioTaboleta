@@ -6,30 +6,30 @@
 # linhas começando por ⭕ ou # são ignoradas
 - Megacenas
 Antena 3                http://radiocast.rtp.pt/antena380a.mp3
-⭕ RFM                     http://21233.live.streamtheworld.com/RFM_SC
-Comercial               http://mcrscast1.mcr.iol.pt/comercial.mp3
+RFM                     https://playerservices.streamtheworld.com/api/livestream-redirect/RFM.mp3
+Comercial               https://stream-icy.bauermedia.pt/comercial.aac
 RDP África              http://radiocast.rtp.pt/rdpafrica80a.mp3
-m80                     http://mcrscast.mcr.iol.pt/m80
+m80                     https://stream-icy.bauermedia.pt/m80.aac
 Rádio Clube Arganil     http://176.9.43.216:8135/stream
 - Nacional
-* Rádio Radar           http://176.9.92.205/radar_mp3
-⭕ RU(                     http://ruc1.cidadedecoimbra.com:8000/
+Rádio Radar             http://proic1.redeaudio.com/radar_aac
+RU(                     https://stream.ruc.pt/high
 Vodafone                http://195.23.102.207/vodafone
 - 8-bit
-# AI Radio                http://www.ai-radio.org/320.aac
+⭕ AI Radio                http://www.ai-radio.org/320.aac
 C64                     http://www.c64.com:8000
-Classic Videogames      http://136.243.156.30:1541/stream/2/
+Classic Videogames      https://lead-server.de:1551/stream/2/
 Klassik Games Radio     http://stream.klassikradio.de/games/mp3-128/
 RPGamers                http://stream.rpgamers.net:8000/rpgn
 - Chill
 1.FM Radio Gaia         http://strm112.1.fm/radiogaia_mobile_mp3
 1.FM Spa                http://strm112.1.fm/spa_mobile_mp3
 Ambient Sleeping Pill   http://radio.stereoscenic.com/asp-s
-#Radio Gaia              http://listen.radionomy.com/chill-out-radio-gaia
+⭕ Radio Gaia              http://listen.radionomy.com/chill-out-radio-gaia
 ⭕ Radio Mantra Nonstop    http://a6.radioheart.ru:8012/nonstop
 ⭕ Radio Mantra Live       http://a6.radioheart.ru:8012/live
 Radio Mantra            https://c22.radioboss.fm:18291/stream
-Mantra24 Radio          http://radio108.ru:8020/stream
+⭕ Mantra24 Radio          http://radio108.ru:8020/stream
 World Revolutions       http://51.255.235.165:5366/stream
 - Internacional
 1.FM Ambient Psychill   http://strm112.1.fm/ambientpsy_mobile_mp3
@@ -56,8 +56,8 @@ Kanal Breiz             http://webradio-preprod.tamm-kreiz.bzh:8000/airtime_128
 ⭕ Plum FM                 http://plumfm.online.radiobreizh.bzh/live.mp3
 ⭕ Radio Bro Gwened        http://rbg.online.radiobreizh.bzh/live.mp3
 ⭕ Radio Kerne             http://kerne.online.radiobreizh.bzh/live.mp3
-Radio Kreis Breiz       http://rkb.online.radiobreizh.bzh/live.mp3
-Radio Naoned            http://naoned.online.radiobreizh.bzh/live.mp3
+⭕ Radio Kreis Breiz       http://rkb.online.radiobreizh.bzh/live.mp3
+⭕ Radio Naoned            http://naoned.online.radiobreizh.bzh/live.mp3
 -
 Rádio Galega            http://wecast-b03-01.flumotion.com/radiogalega/live.mp3
 Rádio Valga             http://99.198.118.250:8028/;
