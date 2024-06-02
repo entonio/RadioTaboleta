@@ -17,6 +17,8 @@ Clicking the server name will run a shell command to restart the server. This ma
 
 Clicking the song name will save it to an SQLite database file if specified in the configuration. A value `$HOME` in the path will be replaced by the user's home directory.
 
+The configuration Stations field can be used to specify a link to download the radio stations file from. If it doesn't work for some reason, the local file is used.
+
 The word _taboleta_ vaguely refers to the informal config file format used, and it's written precisely as intended.
 
 Settings.taboleta
@@ -49,6 +51,9 @@ SQLite      $HOME/Musicas.sqlite
 
 # stop mpd, the OS service manager should respawn it
 Restart     killall -9 mpd
+
+# link to download the stations list from
+Stations    https://some.link/to/your/playlist
 ```
 
 Building

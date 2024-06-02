@@ -1,6 +1,8 @@
 package app
 
 import (
+	"hash/fnv"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -35,6 +37,7 @@ type Settings struct {
 	Language   string
 	SQLite     string
 	Restart    []string
+	Stations   string
 	Predefined Radio
 }
 
@@ -62,7 +65,7 @@ func Start() {
 	CONFIG_DIR = findConfigDir()
 	SETTINGS = readSettings(CONFIG_DIR)
 	log.Printf("SETTINGS: %+v\n", SETTINGS)
-	radios := readRadios(CONFIG_DIR)
+	radios, _ := readRadios(CONFIG_DIR, SETTINGS.Stations)
 	log.Printf("RADIOS: %+v\n", radios)
 	TRANSLATOR = translate.NewTranslator(filepath.Join(CONFIG_DIR, "translations.csv"), "pt")
 
@@ -198,6 +201,8 @@ func readSettings(configDir string) (settings Settings) {
 			settings.SQLite = value
 		case "Restart":
 			settings.Restart = strings.Split(value, " ")
+		case "Stations":
+			settings.Stations = value
 		default:
 			log.Printf("Unexpected key: [%s]", key)
 		}
@@ -205,8 +210,30 @@ func readSettings(configDir string) (settings Settings) {
 	return
 }
 
-func readRadios(configDir string) (radios []Radio) {
-	text, err := taboleta.TextAtPath(filepath.Join(configDir, "Radios.taboleta"))
+func hash(s string) string {
+	f := fnv.New128a()
+	f.Write([]byte(s))
+	var b []byte
+	f.Sum(b)
+	return string(b)
+}
+
+func readRadios(configDir string, link string) (radios []Radio, err error) {
+	if len(link) > 0 {
+		path := filepath.Join(configDir, "Radios."+hash(SETTINGS.Radio)+".taboleta")
+		httpGet(link, path)
+		radios, err = readRadiosFile(path)
+		if err == nil {
+			return
+		}
+		os.Exit(1)
+	}
+
+	return readRadiosFile(filepath.Join(configDir, "Radios.taboleta"))
+}
+
+func readRadiosFile(path string) (radios []Radio, err error) {
+	text, err := taboleta.TextAtPath(path)
 	if err != nil {
 		log.Println(err)
 		return
@@ -230,6 +257,30 @@ func readRadios(configDir string) (radios []Radio) {
 		radios = append(radios, Radio{Name: name, Address: address, Separator: separator, Predefined: predefined})
 		separator = nil
 	}
+	return
+}
+
+func httpGet(from string, to string) (err error) {
+	response, err := http.Get(from)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	defer response.Body.Close()
+
+	f, err := os.Create(to)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	defer f.Close()
+
+	_, err = io.Copy(f, response.Body)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
 	return
 }
 

@@ -7,3 +7,4 @@ Trim        \[onAir:.+\]
 Language    pt
 SQLite      $HOME/Dropbox/Musicas.sqlite
 Restart     killall -9 mpd
+Stations    https://tulimonstro.net/radio/default
